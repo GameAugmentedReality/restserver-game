@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context displayName="http-integrator-web" path="/http-integrator-web" reloadable="true">
+
+   <Resource 
+      auth="Container" 
+      driverClassName="org.postgresql.Driver"
+      maxActive="10" 
+      maxIdle="3" 
+      name="jdbc/restserver-game" 
+      password="123456"
+      type="javax.sql.DataSource" 
+      url="jdbc:postgresql://localhost/restserver-game"
+      username="postgres" />
+
+</Context>
