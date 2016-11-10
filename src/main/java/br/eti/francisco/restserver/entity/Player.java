@@ -13,8 +13,13 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Player {
 
 	@Id
@@ -31,7 +36,10 @@ public class Player {
 	@Column(nullable=false)
 	private String name;
 	
-	@Column(nullable=false)
+	private String password;
+	
+	private String email;
+	
 	private String facebookId;
 
 	@OneToMany
@@ -80,5 +88,26 @@ public class Player {
 	public List<Player> getFriends() {
 		return friends;
 	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public List<Item> getItems() {
+		return items;
+	}
+	
 	
 }
