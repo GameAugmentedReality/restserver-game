@@ -84,7 +84,7 @@
 		</init-param>
 		<init-param>
 			<param-name>com.sun.jersey.spi.container.ResourceFilters</param-name>
-			<param-value>br.eti.francisco.restserver.util.SecurityResourceFilterFactory</param-value>
+			<param-value>br.eti.francisco.restserver.service.MemorySecurityResourceFilterFactory</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>

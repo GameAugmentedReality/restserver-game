@@ -7,12 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)
 @Entity
 public class Item {
 	
@@ -26,6 +21,10 @@ public class Item {
 
 	@Column(nullable=false)
 	private Integer quantity;
+	
+	private boolean inventory;
+	
+	private String characteristics;
 
 	public Product getProduct() {
 		return product;
@@ -45,5 +44,21 @@ public class Item {
 
 	public Integer getId() {
 		return id;
+	}
+
+	public boolean isInventory() {
+		return inventory;
+	}
+
+	public void setInventory(boolean inventory) {
+		this.inventory = inventory;
+	}
+
+	public String getCharacteristics() {
+		return characteristics;
+	}
+
+	public void setCharacteristics(String characteristics) {
+		this.characteristics = characteristics;
 	}
 }

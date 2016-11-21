@@ -3,6 +3,7 @@ package br.eti.francisco.restserver.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,13 +14,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
-@XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)
 public class Player {
 
 	@Id
@@ -31,7 +27,7 @@ public class Player {
 	private Game game;
 	
 	@Column(nullable=false)
-	private String code;
+	private String code = RandomText.getRandom(10);
 	
 	@Column(nullable=false)
 	private String name;
@@ -49,6 +45,9 @@ public class Player {
 	@ManyToMany
 	private List<Player> friends = new ArrayList<Player>();
 	
+	@ManyToOne(optional=false, cascade=CascadeType.ALL)
+	private AccessKey accessKey = new AccessKey("PLAYER");
+	
 	public Game getGame() {
 		return game;
 	}
@@ -59,10 +58,6 @@ public class Player {
 
 	public String getCode() {
 		return code;
-	}
-
-	public void setCode(String code) {
-		this.code = code;
 	}
 
 	public String getName() {
@@ -107,6 +102,10 @@ public class Player {
 
 	public List<Item> getItems() {
 		return items;
+	}
+
+	public AccessKey getAccessKey() {
+		return accessKey;
 	}
 	
 	
